@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/mainMenu">
+    <fragment
+        android:id="@+id/mainMenu"
+        android:name="com.example.facerecognition.MainMenu"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            android:id="@+id/action_mainMenu_to_viewFaces"
+            app:destination="@id/viewFaces" />
+        <action
+            android:id="@+id/action_mainMenu_to_addFace"
+            app:destination="@id/addFace" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewFaces"
+        android:name="com.example.facerecognition.ViewRecognitionList"
+        android:label="fragment_view_faces"
+        tools:layout="@layout/fragment_view_faces" >
+        <action
+            android:id="@+id/action_viewFaces_to_mainMenu"
+            app:destination="@id/mainMenu" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFace"
+        android:name="com.example.facerecognition.UpdateList"
+        android:label="fragment_add_face"
+        tools:layout="@layout/fragment_add_face" >
+        <action
+            android:id="@+id/action_addFace_to_mainMenu"
+            app:destination="@id/mainMenu" />
+    </fragment>
+</navigation>
