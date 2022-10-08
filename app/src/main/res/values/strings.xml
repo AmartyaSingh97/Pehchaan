@@ -7,4 +7,6 @@
     <string name="recognize_faces">Recognize Faces</string>
     <string name="add_faces">Add Faces</string>
     <string name="recognize">Recognize</string>
+    <string name="unable_to_recognize_the_face">Unable to recognize the face?</string>
+    <string name="add_face_cap">Add Face</string>
 </resources>

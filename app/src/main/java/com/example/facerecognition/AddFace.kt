@@ -22,7 +22,7 @@ import androidx.camera.core.Preview;
 import androidx.camera.lifecycle.ProcessCameraProvider;
 import java.io.FileDescriptor
 
-class UpdateList : Fragment() {
+class AddFace : Fragment() {
 
     private var camBtn: Button? = null
     private var addBtn: Button? = null

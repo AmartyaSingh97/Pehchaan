@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/viewFaces"
-        android:name="com.example.facerecognition.ViewRecognitionList"
+        android:name="com.example.facerecognition.ViewFaces"
         android:label="fragment_view_faces"
         tools:layout="@layout/fragment_view_faces" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/addFace"
-        android:name="com.example.facerecognition.UpdateList"
+        android:name="com.example.facerecognition.ViewFaces"
         android:label="fragment_add_face"
         tools:layout="@layout/fragment_add_face" >
         <action
