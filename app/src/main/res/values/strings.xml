@@ -2,4 +2,9 @@
     <string name="app_name">Face Recognition</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_face">Add Face</string>
+    <string name="import_photo">Import Photo</string>
+    <string name="recognize_faces">Recognize Faces</string>
+    <string name="add_faces">Add Faces</string>
+    <string name="recognize">Recognize</string>
 </resources>
