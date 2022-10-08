@@ -1,61 +1,102 @@
 package com.example.facerecognition
 
+import android.content.Intent.*
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.os.ParcelFileDescriptor
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Button
+import androidx.camera.core.CameraSelector
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.camera.core.ImageAnalysis;
+import androidx.camera.core.ImageProxy;
+import androidx.camera.core.Preview;
+import androidx.camera.lifecycle.ProcessCameraProvider;
+import java.io.FileDescriptor
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [UpdateList.newInstance] factory method to
- * create an instance of this fragment.
- */
 class UpdateList : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private var camBtn: Button? = null
+    private var addBtn: Button? = null
+    private var importBtn: Button? = null
+    var cameraSelector: CameraSelector? = null
+    private var camFace : Int = CameraSelector.LENS_FACING_BACK
+    var flip: Boolean = false
+    var start: Boolean = true
+    var cameraProvider: ProcessCameraProvider? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
         requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_face, container, false)
+        val view = inflater.inflate(R.layout.fragment_add_face, container, false)
+        camBtn = requireActivity().findViewById(R.id.cam_btn)
+        addBtn = requireActivity().findViewById(R.id.addFace)
+        importBtn = requireActivity().findViewById(R.id.importPhoto)
+
+
+        //Flip Camera Button
+        camBtn?.setOnClickListener(
+            @Override
+            fun(v: View?) {
+                if(camFace== CameraSelector.LENS_FACING_BACK){
+                    camFace= CameraSelector.LENS_FACING_FRONT
+                    flip= true
+                }
+                else{
+                    camFace= CameraSelector.LENS_FACING_BACK
+                    flip= false
+                }
+                cameraProvider?.unbindAll()
+                //cameraBind()
+        } )
+
+        //Add Face Button
+        addBtn?.setOnClickListener((View.OnClickListener() {
+              @Override
+              fun onClick(v: View?) {
+                //addFace()
+            }
+        }))
+
+        //Import Photo Button
+//        importBtn?.setOnClickListener(
+//                //loadPhoto()
+//        )
+
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment UpdateList.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            UpdateList().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun loadPhoto() {
+        start=false
+
     }
+    private fun getBitmapFromURI(uri: Uri): Bitmap {
+        val parcelFileDescriptor: ParcelFileDescriptor? = requireActivity().contentResolver.openFileDescriptor(uri, "r")
+        val fileDescriptor: FileDescriptor = parcelFileDescriptor!!.fileDescriptor
+        val image: Bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor)
+        parcelFileDescriptor.close()
+        return image
+    }
+
+
+
 }
