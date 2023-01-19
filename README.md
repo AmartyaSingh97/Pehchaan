@@ -1,4 +1,4 @@
-<h1 align="center"> 🚀 Offline Face-Recognition App.</h1>
+<h1 align="center"> 🚀 Pehchaan</h1>
 
 Work in progress, please wait '-'
 
