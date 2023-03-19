@@ -82,7 +82,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-mlkit-face-detection:17.1.0'
 
     //GSON (Conversion of String to Map & Vice-Versa)
-    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'com.google.code.gson:gson:2.10.1'
 
     //Lottie-files (Splash-screen Animation)
     implementation "com.airbnb.android:lottie:5.2.0"
